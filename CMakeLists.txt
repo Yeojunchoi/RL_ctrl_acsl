@@ -1,5 +1,5 @@
 cmake_minimum_required(VERSION 3.5)
-project(RL_ctrl)
+project(rl_ctrl)
 
 # Default to C99
 if(NOT CMAKE_C_STANDARD)
@@ -29,38 +29,20 @@ include_directories(include)
 
 
 #Excutables here
-add_executable(offboard_control 
-	src/offboard_control.cpp
+add_executable(sensor_combined_listener 
+	src/sensor_combined_listener.cpp
 	)
-ament_target_dependencies(offboard_control
-  px4_msgs
+ament_target_dependencies(sensor_combined_listener
   rclcpp
-)
-
-add_executable(sensor_combined 
-	src/sensor_combined.cpp
-	)
-ament_target_dependencies(sensor_combined
   px4_msgs
-  rclcpp
+ 
 )
-
-add_executable(vehicle_gps_position_listener 
-	src/vehicle_gps_position_listener.cpp
-	)
-ament_target_dependencies(vehicle_gps_position_listener
-  px4_msgs
-  rclcpp
-)
-
 
 
 # install excutable
 
 install(TARGETS
-  offboard_control
-  sensor_combined
-  vehicle_gps_position_listener
+  sensor_combined_listener  
   DESTINATION lib/${PROJECT_NAME})
 
 
