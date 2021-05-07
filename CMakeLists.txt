@@ -37,12 +37,22 @@ ament_target_dependencies(sensor_combined_listener
   px4_msgs
  
 )
+add_executable(debug_vect_advertiser 
+	src/debug_vect_advertiser.cpp
+	)
+ament_target_dependencies(debug_vect_advertiser
+  rclcpp
+  px4_msgs
+ 
+)
+
 
 
 # install excutable
 
 install(TARGETS
-  sensor_combined_listener  
+  sensor_combined_listener 
+  debug_vect_advertiser
   DESTINATION lib/${PROJECT_NAME})
 
 
